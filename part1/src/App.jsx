@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
+import './App.css';
 
 const NumberComponent = ({ number }) => {
-  return <div>Componente número: {number}</div>;
+  return <div className="number-component">Componente número: {number}</div>;
 };
 
 const App = () => {
@@ -15,11 +15,15 @@ const App = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleIncrement}>Incrementar</button>
-      {components.map((num, index) => (
-        <NumberComponent key={index} number={num} />
-      ))}
+    <div className="app">
+      <button className="increment-button" onClick={handleIncrement}>
+        Incrementar
+      </button>
+      <div className="components-container">
+        {components.map((num, index) => (
+          <NumberComponent key={index} number={num} />
+        ))}
+      </div>
     </div>
   );
 };
