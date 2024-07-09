@@ -1,16 +1,27 @@
 
+import React, { useState } from 'react';
+
+const NumberComponent = ({ number }) => {
+  return <div>Componente número: {number}</div>;
+};
+
 const App = () => {
-  const friends = [
-    { name: 'Peter', age: 4 },
-    { name: 'Maya', age: 10 },
-  ]
+  const [count, setCount] = useState(0);
+  const [components, setComponents] = useState([]);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+    setComponents([...components, count + 1]);
+  };
 
   return (
     <div>
-      <p>{friends[0].name} {friends[0].age}</p>
-      <p>{friends[1].name} {friends[1].age}</p>
+      <button onClick={handleIncrement}>Incrementar</button>
+      {components.map((num, index) => (
+        <NumberComponent key={index} number={num} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
